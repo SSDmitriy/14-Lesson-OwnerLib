@@ -13,7 +13,8 @@ def junitVersion = "5.7.1",
 dependencies {
     testImplementation(
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
-            "com.codeborne:selenide:$selenideVersion"
+            "com.codeborne:selenide:$selenideVersion",
+            'org.aeonbits.owner:owner:1.0.4'
     )
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }

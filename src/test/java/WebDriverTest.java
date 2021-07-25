@@ -1,3 +1,5 @@
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -5,25 +7,27 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import ownerLib.myConfig.MyBaseSeleniumConfig;
 
-import java.net.URL;
-
 public class WebDriverTest {
 
-    private MyBaseSeleniumConfig myBaseConfig = new MyBaseSeleniumConfig();
+    private MyBaseSeleniumConfig myBaseSeleniumConfig = new MyBaseSeleniumConfig();
 
     @Test
     public void testWebDriver() throws Exception{
-        final WebDriver driver = createWebDriver();
-        driver.get("https://github.com");
+
+        Configuration.browser = "chrome";
+        Selenide.open("https://github.com/login");
+
         Thread.sleep(3000);
-        driver.quit();
+        //        final WebDriver driver = createWebDriver();
+//        driver.get("https://github.com");
+//        driver.quit();
     }
 
     private WebDriver createWebDriver() {
 
-        if (myBaseConfig.isRemote()) {
+        if (myBaseSeleniumConfig.isRemote()) {
             return new RemoteWebDriver(
-                    myBaseConfig.getRemoteUrl(),
+                    myBaseSeleniumConfig.getRemoteUrl(),
                     DesiredCapabilities.chrome()
                     );
         } else {

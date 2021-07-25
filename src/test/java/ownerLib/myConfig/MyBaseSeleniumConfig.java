@@ -7,8 +7,10 @@ public class MyBaseSeleniumConfig implements MyInterfaceSeleniumConfig {
 
     @Override
     public URL getRemoteUrl() {
+
+        String remoteUrl = System.getProperty("webdriver.remote.url");
         try {
-            return new URL("http://selenoid:4444/wd/hub");
+            return new URL(remoteUrl);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -16,6 +18,7 @@ public class MyBaseSeleniumConfig implements MyInterfaceSeleniumConfig {
 
     @Override
     public boolean isRemote() {
-        return false;
+        String isRemote = System.getProperty("webdriver.remote");
+        return Boolean.parseBoolean(isRemote);
     }
 }
