@@ -1,15 +1,17 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import ownerLib.myConfig.MyBaseSeleniumConfig;
+import ownerLib.myConfig.MyInterfaceSeleniumConfig;
 
 public class WebDriverTest {
 
-    private MyBaseSeleniumConfig myBaseSeleniumConfig = new MyBaseSeleniumConfig();
+    private MyInterfaceSeleniumConfig myBaseSeleniumConfig = ConfigFactory
+            .create(MyInterfaceSeleniumConfig.class, System.getProperties());
 
     @Test
     public void testWebDriver() throws Exception{
