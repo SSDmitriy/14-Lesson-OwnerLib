@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def junitVersion = "5.7.1",
+    selenideVersion = "5.23.0"
+
+
+dependencies {
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "com.codeborne:selenide:$selenideVersion"
+    )
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
+
+//testLogging {
+//    lifecycle {
+//        events "started", "skipped", "failed", "standard_error", "standard_out"
+//        exceptionFormat "short"
+//    }
+//}
