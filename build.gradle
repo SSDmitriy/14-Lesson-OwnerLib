@@ -14,7 +14,9 @@ dependencies {
     testImplementation(
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             "com.codeborne:selenide:$selenideVersion",
-            'org.aeonbits.owner:owner:1.0.4'
+            'org.aeonbits.owner:owner:1.0.4',
+            'org.assertj:assertj-core:3.20.2'
+
     )
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
