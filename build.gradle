@@ -21,15 +21,16 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 }
 
 
-//testLogging {
-//    lifecycle {
-//        events "started", "skipped", "failed", "standard_error", "standard_out"
-//        exceptionFormat "short"
-//    }
-//}
+
